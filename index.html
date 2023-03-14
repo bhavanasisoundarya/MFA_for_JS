@@ -25,7 +25,7 @@
     </header>
     <div class="box">
       <section class="password">
-        <input type="text" id="password__result" placeholder="P4$5W0rD!"   onclick="Copypassword()">
+        <input type="text" id="password__result" placeholder="P4$5W0rD!">
         <p class="copied"   > Copied</p>
         <img class="icon" id="copyIcon" src="assets/images/icon-copy.svg" alt="copy icon">
       </section>
@@ -36,11 +36,11 @@
               <label for="length">Character Length</label>
               <output name="result" for="length" id="result">0</output>
             </div>
-            <input type="range" name="length" id="length" min="0" max="20" value="0">
+            <input type="range" name="length" id="length" min="0" max="20" value="10">
           </div>
           <div class="passwordChar">
             <label for="uppercase" class="myCheck">
-              <input type="checkbox" id="uppercase" checked>
+              <input type="checkbox" id="uppercase" >
               Include Uppercase Letters
               <span class="check"></span>
             </label>
@@ -48,23 +48,23 @@
             <label for="lowercase" class="myCheck">
               <input type="checkbox" id="lowercase"  >
               Include Lowercase Letters
-              <span class="check" disabled="disabled"></span>
+              <span class="check" checked></span>
             </label>
 
             <label for="numbers" class="myCheck">
               <input type="checkbox" id="numbers"  >
               Include Numbers
-              <span class="check" disabled="disabled"></span>
+              <span class="check" checked ></span>
             </label>
 
             <label for="symbols" class="myCheck" >
-              <input type="checkbox" id="symbols" disabled="disabled">
+              <input type="checkbox" id="symbols" >
               Include Symbols
-              <span class="check" disabled="disabled"></span>
+              <span class="check" ></span>
             </label>
           </div>
           <div class="btn">
-            <button   onclick="createPassword()" >Generate <img src="assets/images/icon-arrow-right.svg"
+            <button  id="btn" type="button" onclick="generatePassword()" >Generate <img src="assets/images/icon-arrow-right.svg"
                 alt="arrow right">
             </button>
           </div>
@@ -74,75 +74,5 @@
   </div>
   <script src="assets/JS/app.js"></script>
 </body>
-<script>
 
-
-const keys = {
-  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  // lowerCase: "abcdefghijklmnopqrstuvwxyz",
-  // number: "0123456789",
-  // symbol: "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
-}
-
-const getKey = [
-  function upperCase() {
-    return keys.upperCase[Math.floor(Math.random() * keys.upperCase.length)];
-  },
-  // function lowerCase() {
-  //   return keys.lowerCase[Math.floor(Math.random() * keys.lowerCase.length)];
-  // },
-  // function number() {
-  //   return keys.number[Math.floor(Math.random() * keys.number.length)];
-  // },
-  // function symbol() {
-  //   return keys.symbol[Math.floor(Math.random() * keys.symbol.length)];
-  // }
-];
-
-
-
-
-function createPassword() {
-  const upper = document.getElementById("upperCase").checked;
-  // const lower = document.getElementById("lowerCase").checked;
-  // const number = document.getElementById("number").checked;
-  // const symbol = document.getElementById("symbol").checked;
-  if (upper  === 0) {
-    alert("Please check atleast one box!");
-    return;
-  }
-  const passwordBox = document.getElementById("passwordBox");
-  const length = document.getElementById("length");
-  let password = "";
-  while (length.value > password.length) {
-    let keyToAdd = getKey[Math.floor(Math.random() * getKey.length)];
-    let isChecked = document.getElementById(keyToAdd.name).checked;
-    if (isChecked) {
-      password += keyToAdd();
-    }
-  }
-  passwordBox.innerHTML = password;
-
-
-
-
-  
-}
-  
-
-
-
-
-
-
-
-        
-        
-
-    
-
-   
-  
-  
-  </script>
 </html>
